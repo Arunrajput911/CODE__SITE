@@ -28,6 +28,19 @@ router
   .route("/verifyEmail")
   .get(require("../controllers/getControllers/verifyEmail"));
 router.route("/logout").get(require("../controllers/getControllers/logout"));
-router.route('/verifyResetPasswordLink').get(require("../controllers/getControllers/verifyResetPasswordLink"));
-router.route('/resumeData').get(require('../controllers/getControllers/getResumeData'));
+router
+  .route("/verifyResetPasswordLink")
+  .get(require("../controllers/getControllers/verifyResetPasswordLink"));
+router
+  .route("/resumeData")
+  .get(require("../controllers/getControllers/getResumeData"));
+router.route("/events/").get(require("../controllers/getControllers/events"));
+router.route('/events/:id').get(require('../controllers/getControllers/eventById'));
+
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+//------------------------------------ADMIN--------------------------------------
+//-------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+router.route('/admin/events/:id/registrations/').get(require('../controllers/getControllers/admin/registrations'));
 module.exports = router;

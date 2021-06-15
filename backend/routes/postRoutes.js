@@ -12,6 +12,15 @@ router.route('/updateProfile').post(require('../controllers/postControllers/upda
 router.route('/contact').post(require("../controllers/postControllers/contact"));
 router.route('/updateMobile').post(require('../controllers/postControllers/updateMobile'));
 router.route('/resendOtp').post(require('../controllers/postControllers/resendOtp'));
+<<<<<<< HEAD
 
 router.route("/careers").post(require("../controllers/postControllers/careers"))
+=======
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+//-------------------------------------admin routes-------------------------------------------
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+router.route('/admin/addEvent').post(require('../controllers/postControllers/admin/addEvent'));
+>>>>>>> 185bacbf415d4c78407c525743ed874157ae1d63
 module.exports = router;

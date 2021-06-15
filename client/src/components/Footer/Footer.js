@@ -72,7 +72,7 @@ function Footer() {
               <h3 className="menu-head">Actions</h3>
               <ul className="submenu">
                 <li className="links">
-                  <Link to="#">
+                  <Link to="/careers">
                     <img src="https://img.icons8.com/metro/12/000000/chevron-right.png" />
                     Work with Us
                   </Link>

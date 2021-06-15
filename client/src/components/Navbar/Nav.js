@@ -40,7 +40,7 @@ function Nav() {
         </label>
         <input type="checkbox" name="" id="toggle" />
         {/* <!-- navigation menu --> */}
-        <div id="menu">
+        <div id="menu" className={isOpen && "menu-open"}>
           <ul className="nav">
             <li>
               <NavLink to="/">Home</NavLink>
@@ -121,7 +121,7 @@ function Nav() {
                 <div className="nav-column">
                   <ul>
                     <li>
-                      <NavLink to="#">
+                      <NavLink to="/careers">
                         <img
                           src="https://img.icons8.com/metro/26/000000/sort-down.png"
                           className="elevated"
