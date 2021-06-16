@@ -57,7 +57,16 @@ const jobSchema = mongoose.Schema({
     perks:{
         type:[String],
         required:true
-    }
+    },
+    application:[
+        {
+            userName:{type:String,required:true},
+            email:{type:String,required:true},
+            skills:{type:[String],required:true},
+            contactNumber:{type:Number,required:true},
+            resume:{type:String,required:true}
+        }
+    ]
 });
 
 const Jobs = mongoose.model("Jobs",jobSchema);

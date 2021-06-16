@@ -11,18 +11,18 @@ const jobRoutes = [
         Component: jobs,
       },
       {
-        path: "/admin/addJobs",
+        path: "/admin/job/addJob",
         name: "Add New Job",
         sidebarVisible: true,
-        Component: addJobs,
+        Component: addJob,
       },
       {
-        path: "/admin/updateJob/:id",
+        path: "/admin/job/updateJob/:id",
         name: "Update Job",
         sidebarVisible: false,
-        Component: updateJobs,
+        Component: updateJob,
       },{
-        path:"/admin/:id/jobApplications",
+        path:"/admin/job/:id/jobApplications",
         name: "Applications",
         sidebarVisible:false,
         Component: jobApplications

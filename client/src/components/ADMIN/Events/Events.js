@@ -29,7 +29,7 @@ const ConfirmDeletion = ({ modalOpen, setModalOpen, handleDelete, id }) => {
     <Modal isOpen={modalOpen} toggle={toggle}>
       <ModalHeader toggle={toggle}>Confirm</ModalHeader>
       <ModalBody>
-        The event will be deleted permanently and can't be restored later. Are
+        The job will be deleted permanently and can't be restored later. Are
         you sure you want to delete?
       </ModalBody>
       <ModalFooter>

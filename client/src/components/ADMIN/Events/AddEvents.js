@@ -26,9 +26,12 @@ const AddEvents = (props) => {
   const bannerImgRef = React.createRef();
   const cardImgRef = React.createRef();
   const [loading, setLoading] = useState(false);
+  
+
   useEffect(() => {
     return () => info.dispatch(clearEverything());
   },[])
+  
   const handleTagChange = (values) => {
     let parsedValues = [];
     if (values) parsedValues = JSON.parse(values);
