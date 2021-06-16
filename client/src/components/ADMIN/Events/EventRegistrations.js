@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
 import eventRoutes from "./eventRoutes";
 import DashboardLayout from "../Dashboard/DashboardLayout";
-import { Link } from "react-router-dom";
+import { Button, Card, CardBody, CardHeader } from "reactstrap";
 import axios from "axios";
-import { Card, CardBody, CardHeader } from "reactstrap";
 import PaginationComponent from "../../Pagination/Pagination";
 import { InfoContext } from "../../../state/Store";
 import {
   generateError,
-  generateWarning,
-  generateSuccess,
   clearEverything,
 } from "../../../state/info/infoActions";
+import SendMessageModal from "./SendMessageModal";
 const UserCard = ({ user }) => {
   return (
     <Card className="user">
@@ -56,6 +54,8 @@ const EventRegistrations = (props) => {
   const [event, setEvent] = useState({});
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  //message modal -- state
+  const [msgOpen, setMsgOpen] = useState(false);
   //managing pagination -- start
   const [currentPage, setCurrentPage] = useState(1);
   const [totalItems, setTotalItems] = useState(10);
@@ -66,7 +66,6 @@ const EventRegistrations = (props) => {
     axios
       .get(`/api/events/${props.match.params.id}`)
       .then((res) => {
-        console.log(res.data.event);
         setEvent(res.data.event);
       })
       .catch((err) => {
@@ -87,7 +86,6 @@ const EventRegistrations = (props) => {
       )
       .then((res) => {
         setLoading(false);
-        console.log(res.data);
         setTotalItems(res.data.totalItems);
         setUsers(res.data.registered);
       })
@@ -113,24 +111,47 @@ const EventRegistrations = (props) => {
         </CardHeader>
         <hr style={{ marginTop: "1.4rem", marginBottom: "0" }} />
         <CardBody>
-          <h2 className="candidate-heading">Candidates</h2>
+          <div
+            className="candidate-header-container"
+            style={{ position: "relative" }}
+          >
+            <h2 className="candidate-heading">Candidates</h2>
+            {users.length > 0 && (
+              <>
+                <Button
+                  style={{ position: "absolute", right: "1rem", top: 0 }}
+                  onClick={() => setMsgOpen((prev) => !prev)}
+                >
+                  Send Message
+                </Button>
+                <SendMessageModal
+                  modalOpen={msgOpen}
+                  setModalOpen={setMsgOpen}
+                  eventId={props.match.params.id}
+                />
+              </>
+            )}
+          </div>
           {!loading &&
             users.map((user) => <UserCard key={user.email} user={user} />)}
           {!loading && users.length == 0 && <h6>No Registrations Yet</h6>}
           {loading && (
             <>
               <UserCard />
+              {/**loader placeholder cards */}
               <UserCard />
               <UserCard />
               <UserCard />
               <UserCard />
             </>
           )}
-          {totalItems > limit && <PaginationComponent
-            totalItems={totalItems}
-            pageSize={limit}
-            handlePageChange={(page) => setCurrentPage(page)}
-          />}
+          {totalItems > limit && (
+            <PaginationComponent
+              totalItems={totalItems}
+              pageSize={limit}
+              handlePageChange={(page) => setCurrentPage(page)}
+            />
+          )}
         </CardBody>
       </Card>
     </DashboardLayout>
@@ -175,7 +196,7 @@ const ContentLoaderSvg = (props) => {
           </stop>
           <stop
             offset="1.59996"
-            stopColor={props.invert ? "#000000" : "#ffffff"}
+            stopColor={props.invert ? "#f0f0f0" : "#ffffff"}
             stopOpacity="1"
           >
             <animate

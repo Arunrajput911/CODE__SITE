@@ -1,3 +1,4 @@
+@import "../App/colors.scss";
 .event-details-main {
   font-family: "Nunito", sans-serif;
   font-weight: 400;
@@ -5,8 +6,8 @@
     font-size: 1.4rem;
     font-weight: 600;
     color: rgb(28, 24, 51);
-    margin-bottom:.5rem;
-    margin-top:1.2rem;
+    margin-bottom: 0.5rem;
+    margin-top: 1.2rem;
     @media (max-width: 500px) {
       font-size: 1.2rem;
     }
@@ -41,44 +42,52 @@
 
   .eventINfoSection > h1 {
     margin: 40px 0 0;
-    margin-bottom:20px;
+    margin-bottom: 20px;
     font-size: 36px;
     letter-spacing: 0.4px;
     text-align: left;
-    font-weight:600;
+    font-weight: 600;
   }
 
   .registerDetails {
     margin-top: 14px;
     display: flex;
     align-items: center;
-    padding-bottom: 21px;
     border-bottom: 1px solid hsla(0, 0%, 59.2%, 0.14);
     text-transform: uppercase;
     font-weight: 600;
     flex-wrap: wrap;
-    margin-bottom:1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .registerButton {
     text-decoration: none;
     padding: 10px 34px;
-    font-size: 14px;
+    font-size: 1rem;
+    font-weight: 700;
     color: #fff;
     border-radius: 2px;
+    border: none;
     width: -webkit-fit-content;
     width: -moz-fit-content;
     width: fit-content;
-    background: rgb(236, 124, 45);
+    background: $color-primary;
     letter-spacing: 0.2px;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
     cursor: pointer;
     margin-right: 34px;
     margin-top: 0;
-    transition: transform .3s ease-in-out;
-    transform: scale(1);
-    &:hover{
-      transform: scale(1.01);
+    transition: background 0.2s ease-in-out;
+    margin-bottom: 1rem;
+    &:hover {
+      background-color: $button-hover-color;
+    }
+    &:disabled{
+      cursor: not-allowed;
+      opacity: .5;
+      &:hover{
+        background-color: $color-primary;
+      }
     }
   }
   .event {
@@ -87,6 +96,7 @@
     margin-right: 30px;
     font-size: 13px;
     line-height: 13px;
+    margin-bottom: 1rem;
   }
   .event > p {
     margin: 0 0 0 5px;
@@ -99,13 +109,18 @@
     color: rgb(70, 70, 50);
     padding-left: 0;
   }
-  .detailedContent{
-    p{
-      margin:.8rem auto;
+  .detailedContent {
+    p {
+      margin: 0.8rem auto;
     }
-    h1,h2,h3,h4,h5,h6{
-      margin-top:1.5rem;
-      margin-bottom:1.5rem;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
     }
   }
   .description {
@@ -114,10 +129,10 @@
       text-align: left;
       font-size: 15px;
       white-space: pre-wrap;
-      color:rgb(85, 85, 60);
+      color: rgb(85, 85, 60);
       background-color: #ffffff;
     }
-    strong{
+    strong {
       font-weight: 600;
     }
   }
@@ -126,7 +141,7 @@
     list-style: circle;
   }
   li {
-    margin-top: .3rem;
+    margin-top: 0.3rem;
     color: rgb(85, 85, 60);
     margin-left: 1rem;
   }
@@ -134,5 +149,29 @@
     .eventBody {
       width: 90%;
     }
+  }
+}
+
+.registration-modal {
+  .modal-header {
+    position: relative;
+    overflow-x: hidden;
+    .scroller {
+      background: $color-primary;
+      position: absolute;
+      height: 0.3rem;
+      width: 80%;
+      top: 0;
+      left: 0;
+      animation: scroll 1.2s linear infinite;
+    }
+  }
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(340%);
   }
 }
